@@ -1,4 +1,4 @@
-package com.helencoder.leetcode;
+package com.helencoder.leetcode.medium;
 
 /**
  * You are given two non-empty linked lists representing two non-negative integers.

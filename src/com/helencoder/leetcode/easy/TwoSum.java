@@ -1,4 +1,4 @@
-package com.helencoder.leetcode;
+package com.helencoder.leetcode.easy;
 
 import java.util.*;
 

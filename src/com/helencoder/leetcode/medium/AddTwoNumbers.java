@@ -16,13 +16,45 @@ package com.helencoder.leetcode.medium;
  */
 public class AddTwoNumbers {
     public static void main(String[] args) {
+        ListNode l1 = new ListNode(2);
+        l1.next = new ListNode(4);
+        l1.next.next = new ListNode(3);
 
+        ListNode l2 = new ListNode(5);
+        l2.next = new ListNode(6);
+        l2.next.next = new ListNode(4);
+
+        addTwoNumbers(l1, l2);
     }
 
 
-//    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-//
-//    }
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        StringBuilder sb1 = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder();
+
+        ListNode tmp1 = l1;
+        while (tmp1 != null) {
+            sb1.insert(0, tmp1.val);
+            tmp1 = tmp1.next;
+        }
+
+        ListNode tmp2 = l2;
+        while (tmp2 != null) {
+            sb2.insert(0, tmp2.val);
+            tmp2 = tmp2.next;
+        }
+
+        int num = Integer.valueOf(sb1.toString()) + Integer.valueOf(sb2.toString());
+
+        char[] charArr = String.valueOf(num).toCharArray();
+
+        ListNode res = new ListNode(charArr[charArr.length - 1]);
+        for (int i = charArr.length - 2; i >= 0; i--) {
+            res.next = new ListNode(charArr[i]);
+        }
+
+        return res;
+    }
 
 }
 

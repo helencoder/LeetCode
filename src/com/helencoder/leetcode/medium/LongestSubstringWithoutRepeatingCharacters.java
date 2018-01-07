@@ -1,8 +1,6 @@
 package com.helencoder.leetcode.medium;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Given a string, find the length of the longest substring without repeating characters.
@@ -22,9 +20,10 @@ public class LongestSubstringWithoutRepeatingCharacters {
         //String s = "pwwkew";
         //String s = "dvdf";
         String s = "asjrgapa";
-        System.out.println(lengthOfLongestSubstring(s));
+        System.out.println(lengthOfLongestSubstring1(s));
     }
 
+    // failed caused by "asjrgapa"
     public static int lengthOfLongestSubstring(String s) {
         char[] charArray = s.toCharArray();
         int length = 0;
@@ -53,6 +52,32 @@ public class LongestSubstringWithoutRepeatingCharacters {
         }
 
         return length >= rve_length ? length : rve_length;
+    }
+
+    // all by myself
+    public static int lengthOfLongestSubstring1(String s) {
+        char[] charArray = s.toCharArray();
+
+        Set<String> set = new TreeSet<String>();
+        String tmpLongest = "";
+        for (int i = 0; i < charArray.length; i++) {
+            if (tmpLongest.indexOf(charArray[i]) != -1) {
+                // find same str
+                set.add(tmpLongest);
+                tmpLongest += charArray[i];
+                tmpLongest = tmpLongest.substring(tmpLongest.indexOf(charArray[i]) + 1);
+            } else {
+                tmpLongest += charArray[i];
+            }
+        }
+        set.add(tmpLongest);
+
+        int length = 0;
+        for (String str : set) {
+            length = str.length() > length ? str.length() : length;
+        }
+
+        return length;
     }
 
 }

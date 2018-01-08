@@ -31,6 +31,20 @@ public class MedianofTwoSortedArrays {
         double res = 0;
 
         // combine two arrays
+        int len = nums1.length + nums2.length;
+        int[] combineArrays = new int[len];
+
+        System.arraycopy(nums1, 0, combineArrays, 0, nums1.length);
+        System.arraycopy(nums2, 0, combineArrays, nums1.length, nums2.length);
+
+        // sort the combine arrays
+        Arrays.sort(combineArrays);
+
+        if (len % 2 == 0) {
+            res = (combineArrays[len / 2] + combineArrays[len / 2 - 1]) / 2.0;
+        } else {
+            res = combineArrays[len / 2];
+        }
 
         return res;
     }

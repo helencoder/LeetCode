@@ -19,7 +19,7 @@ import java.util.List;
  *
  * Created by zhenghailun on 2018/1/7.
  */
-public class MedianofTwoSortedArrays {
+public class MedianOfTwoSortedArrays {
 
     public static void main(String[] args) {
         int[] num1 = new int[]{1, 3};
